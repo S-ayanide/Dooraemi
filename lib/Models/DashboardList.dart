@@ -64,7 +64,10 @@ class _DashboardListState extends State<DashboardList> {
               child: InkWell(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => Profile(value: computeTime() + computeSeconds())
+                    builder: (context) => Profile(
+                      value: computeTime() + computeSeconds(),
+                      pic: data[i]['picture']['thumbnail']
+                    )
                   ));
                 },
                 child: Row(
