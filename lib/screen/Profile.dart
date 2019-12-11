@@ -1,3 +1,4 @@
+import 'package:dooraemi/Models/VoiceDialog.dart';
 import 'package:flutter/material.dart';
 import '../Models/VoicemailDialog.dart';
 import '../Models/TextDialog.dart';
@@ -15,6 +16,12 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
 
   final ScrollController _mycontroller = new ScrollController();
+
+  @override
+  void initState(){
+    super.initState();
+    initSpeechRecognizer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +57,9 @@ class _ProfileState extends State<Profile> {
                     children: <Widget>[
                       RaisedButton(
                         child: Icon(Icons.mic, size: 60.0,),
-                        onPressed: (){},
+                        onPressed: (){
+                          createSpeechDialog(context);
+                        },
                         color: Color(0xFFaef879),
                         padding: const EdgeInsets.fromLTRB(70.0,15.0,75.0,20.0),
                       ),

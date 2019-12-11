@@ -1,3 +1,4 @@
+import 'package:dooraemi/Models/VoiceDialog.dart' as prefix0;
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
@@ -6,6 +7,7 @@ import './DateTimeFetcher.dart';
 import '../screen/Profile.dart';
 import '../Models/VoicemailDialog.dart';
 import '../Models/TextDialog.dart';
+import '../Models/VoiceDialog.dart';
 
 class DashboardList extends StatefulWidget {
   @override
@@ -36,11 +38,17 @@ class _DashboardListState extends State<DashboardList> {
   void initState(){
     super.initState();
     this.getData();
+    initSpeechRecognizer();
+  }
+
+  computeDate(){
+    String curDate = findDate() + ' ' + findMonth() + ', ' + findYear();
+    return curDate;
   }
 
   computeTime(){
-    String curDate = findDate() + ' ' + findMonth() + ', ' + findYear() + '              ' + findHourTime() + ':' + findMinuteTime();
-    return curDate;
+    String curTime = findHourTime() + ':' + findMinuteTime();
+    return curTime;
   }
 
   computeSeconds(){
@@ -90,6 +98,17 @@ class _DashboardListState extends State<DashboardList> {
                             title: Row(
                               children: <Widget>[
                                 Text(
+                                  computeDate(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17.0,
+                                    fontFamily: 'Amatic',
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width / 10,
+                                ),
+                                Text(
                                   computeTime(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -113,7 +132,9 @@ class _DashboardListState extends State<DashboardList> {
                               SizedBox(width: 10.0,),
                               RaisedButton(
                                 child: Icon(Icons.mic),
-                                onPressed: (){},
+                                onPressed: (){
+                                  createSpeechDialog(context);
+                                },
                                 color: Color(0xFFaef879),
                                 padding: const EdgeInsets.fromLTRB(20.0,5.0,20.0,5.0),
                               ),

@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(  
-        height: 600,              
+        height: MediaQuery.of(context).size.height,              
         child: Stack(children: <Widget>[
           SingleChildScrollView(
             controller: _mycontroller,

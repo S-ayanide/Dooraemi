@@ -26,7 +26,7 @@ class _DndState extends State<Dnd> {
     if(dndToggleValue == true){
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text('Dnd is turned on'),
+          content: Text('DND is turned on'),
           duration: Duration(seconds: 2),
         )
       );

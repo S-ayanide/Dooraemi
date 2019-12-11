@@ -34,9 +34,14 @@ class _RecentState extends State<Recent> {
     this.getData();
   }
 
-  computeTime(){
-    String curDate = findDate() + ' ' + findMonth() + ', ' + findYear() + '              ' + findHourTime() + ':' + findMinuteTime();
+  computeDate(){
+    String curDate = findDate() + ' ' + findMonth() + ', ' + findYear();
     return curDate;
+  }
+
+  computeTime(){
+    String curTime = findHourTime() + ':' + findMinuteTime();
+    return curTime;
   }
 
   computeSeconds(){
@@ -102,6 +107,17 @@ class _RecentState extends State<Recent> {
                                 ListTile(
                                   title: Row(
                                     children: <Widget>[
+                                      Text(
+                                        computeDate(),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17.0,
+                                          fontFamily: 'Amatic',
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: MediaQuery.of(context).size.width / 10,
+                                      ),
                                       Text(
                                         computeTime(),
                                         style: TextStyle(
