@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Models/VoicemailDialog.dart';
+import '../Models/TextDialog.dart';
 
 class Profile extends StatefulWidget {
 
@@ -14,8 +16,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      child: Scaffold(
+    return Scaffold(
         body: Column(
           children: <Widget>[
             Container(
@@ -30,7 +31,8 @@ class _ProfileState extends State<Profile> {
               child: Center(
                 child: Text(widget.value, style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20.0
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold
                   ),  
                 ),
               ),
@@ -48,7 +50,9 @@ class _ProfileState extends State<Profile> {
                 ),
                 RaisedButton(
                   child: Icon(Icons.message, size: 60.0,),
-                  onPressed: (){},
+                  onPressed: (){
+                    createTextDialog(context);
+                  },
                   color: Color(0xFF8acaf6),
                   padding: const EdgeInsets.fromLTRB(75.0,15.0,70.0,20.0),
                 )
@@ -64,13 +68,14 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
-              onPressed: (){},
+              onPressed: (){
+                createVoicemailDialog(context);
+              },
               color: Color(0xFFfbd0f2),
               padding: const EdgeInsets.fromLTRB(175.0,25.0,175.0,24.0),
             ),
           ],
         ),
-      ),
     );
   }
 }

@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import './DateTimeFetcher.dart';
 import '../screen/Profile.dart';
+import '../Models/VoicemailDialog.dart';
+import '../Models/TextDialog.dart';
 
 class DashboardList extends StatefulWidget {
   @override
@@ -117,13 +119,17 @@ class _DashboardListState extends State<DashboardList> {
                               ),
                               RaisedButton(
                                 child: Icon(Icons.message),
-                                onPressed: (){},
+                                onPressed: (){
+                                  createTextDialog(context);
+                                },
                                 color: Color(0xFF8acaf6),
                                 padding: const EdgeInsets.fromLTRB(20.0,5.0,20.0,5.0),
                               ),
                               RaisedButton(
                                 child: Icon(Icons.voicemail),
-                                onPressed: (){},
+                                onPressed: (){
+                                  createVoicemailDialog(context);
+                                },
                                 color: Color(0xFFfbd0f2),
                                 padding: const EdgeInsets.fromLTRB(20.0,5.0,20.0,5.0),
                               ),
