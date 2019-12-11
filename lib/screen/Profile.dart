@@ -51,9 +51,23 @@ class _ProfileState extends State<Profile> {
                   onPressed: (){},
                   color: Color(0xFF8acaf6),
                   padding: const EdgeInsets.fromLTRB(75.0,15.0,70.0,20.0),
-                ),
+                )
               ],
-            )
+            ),
+            RaisedButton(
+              child: Container(
+                width: 80.0,
+                child: Column(
+                  children: <Widget>[
+                    Icon(Icons.voicemail, size: 40.0),
+                    Text('Voicemail', style: TextStyle(fontSize: 12.0),),
+                  ],
+                ),
+              ),
+              onPressed: (){},
+              color: Color(0xFFfbd0f2),
+              padding: const EdgeInsets.fromLTRB(175.0,25.0,175.0,24.0),
+            ),
           ],
         ),
       ),
