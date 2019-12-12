@@ -30,6 +30,13 @@ class _DndState extends State<Dnd> {
           duration: Duration(seconds: 2),
         )
       );
+    } else {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('DND is turned off'),
+          duration: Duration(seconds: 2),
+        )
+      );
     }
   }
 

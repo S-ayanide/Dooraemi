@@ -1,12 +1,13 @@
-import 'package:dooraemi/Models/VoiceDialog.dart';
 import 'package:flutter/material.dart';
 import '../Models/VoicemailDialog.dart';
 import '../Models/TextDialog.dart';
+import '../Models/SpeechDialog.dart';
 
 class Profile extends StatefulWidget {
-
+  
   final String value;
   final String pic;
+  
   Profile({this.value, this.pic});
 
   @override
@@ -20,7 +21,6 @@ class _ProfileState extends State<Profile> {
   @override
   void initState(){
     super.initState();
-    initSpeechRecognizer();
   }
 
   @override
@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: 430.0,
+                    height: MediaQuery.of(context).size.height/1.43,
                     width: MediaQuery.of(context).size.width,
                     child: Image(
                       image: NetworkImage(widget.pic),
@@ -58,9 +58,11 @@ class _ProfileState extends State<Profile> {
                       RaisedButton(
                         child: Icon(Icons.mic, size: 60.0,),
                         onPressed: (){
-                          createSpeechDialog(context);
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => SpeechDialog()
+                          ));
                         },
-                        color: Color(0xFFaef879),
+                        color: Color(0xFFbfb0f7),
                         padding: const EdgeInsets.fromLTRB(70.0,15.0,75.0,20.0),
                       ),
                       RaisedButton(

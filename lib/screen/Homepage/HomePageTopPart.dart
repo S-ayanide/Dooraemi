@@ -39,7 +39,7 @@ class _HomePageTopPartState extends State<HomePageTopPart> {
                 ),
                 Container(
                   padding: EdgeInsets.all(10.0),
-                  width: 220.0,
+                  width: MediaQuery.of(context).size.width / 1.5,
                   height: 80.0,
                   decoration: BoxDecoration(
                     color: Colors.white,

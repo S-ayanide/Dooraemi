@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../screen/Profile.dart';
 import '../Models/DateTimeFetcher.dart';
+import '../Models/SpeechDialog.dart';
 
 class Recent extends StatefulWidget {
   @override
@@ -142,7 +143,11 @@ class _RecentState extends State<Recent> {
                                     SizedBox(width: 20.0,),
                                     RaisedButton(
                                       child: Text('Tap to Reply', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),
-                                      onPressed: (){},
+                                      onPressed: (){
+                                        Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) => SpeechDialog()
+                                        ));
+                                      },
                                       color: Color(0xFF30336b),
                                       padding: const EdgeInsets.fromLTRB(20.0,5.0,20.0,5.0),
                                     ),
