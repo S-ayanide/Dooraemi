@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ListTile(
               title: Text('History'),
               trailing: Icon(Icons.history),
-              onTap: (){},
+              onTap: () => Navigator.of(context).pushNamed("/b"),
               ),
             ListTile(
               title: Text('Do Not Disturb'),
@@ -158,28 +158,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: controller,
         ),
       ),
-      // BottomNavigationBar(
-        
-      //   onTap: (int index){
-      //     setState(() {
-      //       selectedPage = index;
-      //     });
-      //   },
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       title: Text('Home')
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.call),
-      //       title: Text('Recent'),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.history),
-      //       title: Text('History')
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

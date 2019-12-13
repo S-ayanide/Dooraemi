@@ -137,6 +137,21 @@ class _SpeechDialogState extends State<SpeechDialog> {
                           ),
                         )
                       ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      RaisedButton(
+                        color: Colors.deepPurple,
+                        child: Text('Send', style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        )),
+                        onPressed: (){},
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       Expanded(
                         child: Center(
                           child: speech.isListening ? 
