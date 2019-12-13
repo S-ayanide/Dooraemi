@@ -51,19 +51,19 @@ class _RecentState extends State<Recent> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Recent',style: TextStyle(color: Colors.white)),
-        iconTheme: IconThemeData(color: Colors.white),
-        actions: <Widget>[
-          IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.account_circle),
-            iconSize: 32.0,
-            color: Colors.white,
-          )
-        ],
-        backgroundColor: Color(0xFF30336b),
-      ),
+      // appBar: AppBar(
+      //   iconTheme: IconThemeData(color: Colors.white),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       onPressed: (){
+      //         Navigator.of(context).pop();
+      //       },
+      //       color: Colors.white,
+      //       icon: Icon(Icons.arrow_back_ios),
+      //     )
+      //   ],
+      //   backgroundColor: Color(0xFFf6e58d),
+      // ),
       body: Stack(
         children: <Widget>[
           Container(

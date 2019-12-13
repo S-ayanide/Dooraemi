@@ -34,6 +34,7 @@ class _SpeechDialogState extends State<SpeechDialog> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: _hasSpeech
             ? Container(
@@ -113,13 +114,23 @@ class _SpeechDialogState extends State<SpeechDialog> {
                                   height: 30.0,
                                 ),
                                 Center(
-                                  child: Text('Your Message'),
+                                  child: Text('Your Message', style: TextStyle(
+                                    fontSize: 17.0, 
+                                    fontWeight: FontWeight.bold
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 30.0,
                                 ),
                                 Center(
-                                  child: Text(lastWords), 
+                                  child: Padding(
+                                    padding: EdgeInsets.all(20.0),
+                                    child: Text(lastWords), 
+                                  )
+                                ),
+                                SizedBox(
+                                  height: 20.0,
                                 ),
                               ],
                             ),
@@ -128,7 +139,24 @@ class _SpeechDialogState extends State<SpeechDialog> {
                       ),
                       Expanded(
                         child: Center(
-                          child: speech.isListening ? Text("I'm listening...") : Text( 'Not listening' ),
+                          child: speech.isListening ? 
+                          Container(
+                            color: Color(0xFF615e56),
+                            height: MediaQuery.of(context).size.height / 13,
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: Text("I'm listening...", style: TextStyle(color: Colors.white),)
+                            )
+                          )
+                          : 
+                          Container(
+                            color: Color(0xFF615e56),
+                            height: MediaQuery.of(context).size.height / 13,
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: Text( 'Not listening', style: TextStyle(color: Colors.white),),
+                            )
+                          )
                         ),
                       ),
                     ],

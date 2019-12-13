@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height/1.43,
+                    height: MediaQuery.of(context).size.height/1.6,
                     width: MediaQuery.of(context).size.width,
                     child: Image(
                       image: NetworkImage(widget.pic),

@@ -6,22 +6,33 @@ import '../../Models/Knocks.dart';
 import '../../Models/DashboardList.dart';
 import '../../Models/Dnd.dart';
 import './BottomDesign.dart';
+import '../Recent.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
 
   final ScrollController _mycontroller = new ScrollController();
   int selectedPage=0;  
   var dndToggleValue;
+  TabController controller;
+
 
   @override
   void initState(){
     super.initState();
     dndToggleValue = false;
+    controller = new TabController(vsync: this, length: 3);
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the Tab Controller
+    controller.dispose();
+    super.dispose();
   }
 
   dndToggle(bool e){
@@ -71,15 +82,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text('History'),
               trailing: Icon(Icons.history),
-              onTap: (){
-                // Navigator.of(context).push(
-                //       MaterialPageRoute(
-                //         builder: (BuildContext context){
-                //           return History();
-                //       },
-                //     ),
-                //   );
-                },
+              onTap: (){},
               ),
             ListTile(
               title: Text('Do Not Disturb'),
@@ -94,61 +97,89 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Container(  
-        height: MediaQuery.of(context).size.height,              
-        child: Stack(children: <Widget>[
-          SingleChildScrollView(
-            controller: _mycontroller,
-            child: Column(
+      body: TabBarView(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height,             
+            child: Stack(
               children: <Widget>[
-                HomePageTopPart(),
-                SizedBox(height: 20),
-                HomePageBottomPart(),
-                SizedBox(height: 80),
-                Knocks(),
-                SizedBox(height: 30),
-                Text('Latest Activity', style: TextStyle(
-                  fontFamily: 'Cabin',
-                  height: 4.0,
-                  letterSpacing: 5.0,
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.bold
-                ),),
-                SizedBox(height: 20),
-                DashboardList(),
-                SizedBox(height: 50),
-                Dnd(),
-                BottomDesign()
+                SingleChildScrollView(
+                  controller: _mycontroller,
+                  child: Column(
+                    children: <Widget>[
+                      HomePageTopPart(),
+                      SizedBox(height: 20),
+                      HomePageBottomPart(),
+                      SizedBox(height: 80),
+                      Knocks(),
+                      SizedBox(height: 30),
+                      Text('Latest Activity', style: TextStyle(
+                        fontFamily: 'Cabin',
+                        height: 4.0,
+                        letterSpacing: 5.0,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.bold
+                      ),),
+                      SizedBox(height: 20),
+                      DashboardList(),
+                      SizedBox(height: 50),
+                      Dnd(),
+                      BottomDesign()
+                    ],
+                  ),
+                )
               ],
+            ),     
+          ),
+          Recent(),
+          History()
+        ],
+        controller: controller,
+      ),
+      bottomNavigationBar: Material(
+        child: TabBar(
+          indicatorColor: Colors.orange,
+          labelColor: Color(0xFFffbe76),
+          unselectedLabelColor: Color(0xFF30336b),
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(Icons.home),
+              text: 'Home',
             ),
-          )
+            Tab(
+              icon: Icon(Icons.call),
+              text: 'Recent',
+            ),
+            Tab(
+              icon: Icon(Icons.history),
+              text: 'History',
+            ),
           ],
+          controller: controller,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedPage,
-        unselectedItemColor: Color(0xFF718093),
-        selectedItemColor: Color(0xFFfa983a),
-        onTap: (int index){
-          setState(() {
-            selectedPage = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home')
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            title: Text('Recent'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            title: Text('History')
-          ),
-        ],
-      ),
+      // BottomNavigationBar(
+        
+      //   onTap: (int index){
+      //     setState(() {
+      //       selectedPage = index;
+      //     });
+      //   },
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       title: Text('Home')
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.call),
+      //       title: Text('Recent'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.history),
+      //       title: Text('History')
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

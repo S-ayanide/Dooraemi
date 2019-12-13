@@ -25,6 +25,12 @@ dependencies:
   cupertino_icons: ^0.1.2
   http: ^0.12.0
   speech_to_text: ^0.6.3
+  flutter_launcher_icons: ^0.7.4
+
+flutter_icons:
+  image_path: "icon/Icon.PNG"
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:
@@ -43,8 +49,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - assets/sounds/speech_to_text_listening.m4r
+  assets:
+    - assets/splashScreen/DooraemiSplashScreen.PNG
   #   - assets/sounds/speech_to_text_cancel.m4r
   #   - assets/sounds/speech_to_text_stop.m4r
 
