@@ -75,6 +75,7 @@ class _DashboardListState extends State<DashboardList> {
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => Profile(
+                      date: computeDate(),
                       value: computeTime() + computeSeconds(),
                       pic: data[i]['picture']['thumbnail']
                     )

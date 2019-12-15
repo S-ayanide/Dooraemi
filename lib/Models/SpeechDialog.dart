@@ -155,24 +155,18 @@ class _SpeechDialogState extends State<SpeechDialog> {
                       Expanded(
                         child: Center(
                           child: speech.isListening ? 
-                          Container(
-                            color: Color(0xFF615e56),
-                            height: MediaQuery.of(context).size.height / 13,
-                            width: MediaQuery.of(context).size.width,
-                            child: Center(
-                              child: Text("I'm listening...", style: TextStyle(color: Colors.white),)
-                            )
+                          Text("I'm listening...", style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0
+                            ),
                           )
-                          : 
-                          Container(
-                            color: Color(0xFF615e56),
-                            height: MediaQuery.of(context).size.height / 13,
-                            width: MediaQuery.of(context).size.width,
-                            child: Center(
-                              child: Text( 'Not listening', style: TextStyle(color: Colors.white),),
-                            )
-                          )
-                        ),
+                          :
+                          Text( 'Not listening', style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.0
+                            ),
+                          ),  
+                        )
                       ),
                     ],
                   ),

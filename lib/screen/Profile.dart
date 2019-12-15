@@ -6,9 +6,10 @@ import '../Models/SpeechDialog.dart';
 class Profile extends StatefulWidget {
   
   final String value;
+  final String date;
   final String pic;
   
-  Profile({this.value, this.pic});
+  Profile({this.date, this.value, this.pic});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -41,13 +42,23 @@ class _ProfileState extends State<Profile> {
                     )
                   ),
                   Container(
-                    child: Center(
-                      child: Text(widget.value, style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold
-                        ),  
-                      ),
+                    child: Row(
+                      children: <Widget>[
+                        SizedBox(width: MediaQuery.of(context).size.width / 14,),
+                        Text(widget.date, style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold  
+                          ),
+                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width/4,),
+                        Text(widget.value, style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold  
+                          ),
+                        )
+                      ],
                     ),
                     color: Colors.black,
                     height: 55.0,
